@@ -14,18 +14,14 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/sealink/coverage-kit"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files = Dir["CHANGELOG.md", "README.md", "coverage-kit.gemspec", "lib/**/*"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "simplecov"
+  spec.add_dependency "simplecov-lcov"
 
-  spec.add_development_dependency "bundler", "~> 2"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "simplecov-rcov"
-  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "simplecov-lcov"
 end
