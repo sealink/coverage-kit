@@ -9,11 +9,17 @@ module Coverage
       @maximum_coverage = @minimum_coverage + 0.5
 
       require 'simplecov'
-      Coveralls.wear! if defined?(Coveralls)
-
       formatters = []
       formatters << SimpleCov::Formatter::RcovFormatter if defined?(SimpleCov::Formatter::RcovFormatter)
-      formatters << Coveralls::SimpleCov::Formatter if defined?(Coveralls)
+
+      if (defined?(SimpleCov::Formatter::LcovFormatter))
+        SimpleCov::Formatter::LcovFormatter.config do |c|
+          c.report_with_single_file = true
+          c.single_report_path = 'coverage/lcov.info'
+        end
+
+        formatters << SimpleCov::Formatter::LcovFormatter
+      end
       SimpleCov.formatters = formatters
 
       SimpleCov.start do
@@ -22,6 +28,7 @@ module Coverage
         add_filter '/spec/'
         add_group 'lib', 'lib'
       end
+
       SimpleCov.at_exit do
         SimpleCov.result.format!
         percent = SimpleCov.result.covered_percent
