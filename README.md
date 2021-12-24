@@ -1,8 +1,18 @@
 # Coverage::Kit
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/coverage/kit`. To experiment with that code, run `bin/console` for an interactive prompt.
+Configures SimpleCov to enforce coverage is at least exceeds the minimum value but
+will also ensure the coverage has not crept up too much (0.5%)
 
-TODO: Delete this and the text above, and describe your gem
+It will also auto configure the `simplecov-rcov` and `simplecov-lcov` formatters.
+
+## HTML Report
+
+To generate a html coverage report include the `simplecov-rcov` gem in the parent project.
+
+## Coveralls
+
+If you want to publish results to coveralls simple include the `simplecov-lcov`
+gem in the parent project and use the coveralls github action (https://github.com/marketplace/actions/coveralls-github-action)
 
 ## Installation
 
@@ -22,7 +32,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add to your `spec_helper.rb` file or equivalent
+```
+require 'simplecov-rcov'
+require 'simplecov-lcov'
+require 'coverage/kit'
+
+Coverage::Kit.setup(minimum_coverage: 69.95)
+```
 
 ## Development
 
@@ -38,4 +55,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

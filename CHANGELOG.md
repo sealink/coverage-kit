@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).  
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
 
+## Unreleased
+
+- [PLAT-172] Remove coveralls from the gem as its not longer required use simplecov-lcov instead.
+
 ## 0.2.0
 
 - [TT-8639] Update to build with github actions / ruby 3.0
