@@ -1,25 +1,25 @@
 # Coverage::Kit
 
-Configures SimpleCov to enforce coverage is at least exceeds the minimum value but
-will also ensure the coverage has not crept up too much (0.5%)
+The purpose of this gem is to provide a common setup for simplecov when used
+for publicly released gems.
 
-It will also auto configure the `simplecov-rcov` and `simplecov-lcov` formatters.
+By default it will generate lcov format in CI mode (useful for Coveralls) and
+a html based report in standard development mode.
 
-## HTML Report
-
-To generate a html coverage report include the `simplecov-rcov` gem in the parent project.
+It also configures SimpleCov to enforce a minimum defined coverage percentage.
+It also adds an additional check to ensure the coverage has not crept up too much (0.5%)
 
 ## Coveralls
 
-If you want to publish results to coveralls simple include the `simplecov-lcov`
-gem in the parent project and use the coveralls github action (https://github.com/marketplace/actions/coveralls-github-action)
+An coveralls compatible lcov file is generated in CI mode, this can be published
+with an github action (https://github.com/marketplace/actions/coveralls-github-action)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'coverage-kit'
+gem 'coverage-kit', require: false
 ```
 
 And then execute:
@@ -34,8 +34,6 @@ Or install it yourself as:
 
 Add to your `spec_helper.rb` file or equivalent
 ```
-require 'simplecov-rcov'
-require 'simplecov-lcov'
 require 'coverage/kit'
 
 Coverage::Kit.setup(minimum_coverage: 69.95)

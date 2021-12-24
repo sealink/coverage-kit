@@ -1,4 +1,6 @@
 require "coverage/kit/version"
+require "simplecov"
+require "simplecov-lcov"
 
 module Coverage
   module Kit
@@ -8,21 +10,22 @@ module Coverage
       @minimum_coverage = minimum_coverage
       @maximum_coverage = @minimum_coverage + 0.5
 
-      require 'simplecov'
-      formatters = []
-      formatters << SimpleCov::Formatter::RcovFormatter if defined?(SimpleCov::Formatter::RcovFormatter)
-
-      if (defined?(SimpleCov::Formatter::LcovFormatter))
-        SimpleCov::Formatter::LcovFormatter.config do |c|
-          c.report_with_single_file = true
-          c.single_report_path = 'coverage/lcov.info'
+      SimpleCov.start do
+        if ENV['CI']
+          SimpleCov::Formatter::LcovFormatter.config do |c|
+            c.report_with_single_file = true
+            c.single_report_path = 'coverage/lcov.info'
+          end
+          formatter SimpleCov::Formatter::LcovFormatter
+        else
+          formatter SimpleCov::Formatter::MultiFormatter.new([
+            SimpleCov::Formatter::SimpleFormatter,
+            SimpleCov::Formatter::HTMLFormatter
+          ])
         end
 
-        formatters << SimpleCov::Formatter::LcovFormatter
-      end
-      SimpleCov.formatters = formatters
+        enable_coverage :branch
 
-      SimpleCov.start do
         add_filter '/vendor/'
         add_filter '/config/'
         add_filter '/spec/'
