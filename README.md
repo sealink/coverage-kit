@@ -1,4 +1,9 @@
-# Coverage::Kit
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+[![Gem Version](https://badge.fury.io/rb/coverage-kit.svg)](http://badge.fury.io/rb/coverage-kit)
+[![Build Status](https://github.com/sealink/coverage-kit/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/sealink/coverage-kit/actions)
+[![Coverage Status](https://coveralls.io/repos/sealink/coverage-kit/badge.svg)](https://coveralls.io/r/sealink/coverage-kit)
+
+## Purpose
 
 The purpose of this gem is to provide a common setup for simplecov when used
 for publicly released gems.
