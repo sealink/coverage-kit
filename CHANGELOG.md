@@ -6,6 +6,7 @@ This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 ## Unreleased
 
 - [PLAT-172] Remove coveralls from the gem as its not longer required use simplecov-lcov instead.
+- [PLAT-176] Use the standardrb linter
 
 ## 0.2.0
 
