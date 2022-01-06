@@ -1,18 +1,18 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 # coding: utf-8
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'coverage/kit/version'
+require "coverage/kit/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "coverage-kit"
-  spec.version       = Coverage::Kit::VERSION
-  spec.authors       = ["Michael Noack"]
-  spec.email         = ["support@travellink.com.au"]
+  spec.name = "coverage-kit"
+  spec.version = Coverage::Kit::VERSION
+  spec.authors = ["Michael Noack"]
+  spec.email = ["support@travellink.com.au"]
 
-  spec.summary       = %q{Helper to setup good coverage for tests}
-  spec.description   = %q{Helper to setup good coverage for tests}
-  spec.homepage      = "https://github.com/sealink/coverage-kit"
-  spec.license       = "MIT"
+  spec.summary = "Helper to setup good coverage for tests"
+  spec.description = "Helper to setup good coverage for tests"
+  spec.homepage = "https://github.com/sealink/coverage-kit"
+  spec.license = "MIT"
 
   spec.files = Dir["CHANGELOG.md", "README.md", "coverage-kit.gemspec", "lib/**/*"]
   spec.require_paths = ["lib"]
@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "simplecov-lcov"
+  spec.add_development_dependency "standard"
 end
